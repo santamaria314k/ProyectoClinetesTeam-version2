@@ -1,0 +1,231 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1:3307
+-- Tiempo de generación: 27-03-2025 a las 01:07:24
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.0.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `gestorclientesv2`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `personas`
+--
+
+CREATE TABLE `personas` (
+  `identificacion` int(11) NOT NULL,
+  `digitoVerificacion` int(11) DEFAULT NULL,
+  `descripcionActividad` varchar(500) DEFAULT NULL,
+  `tipoIdentificacion` varchar(250) NOT NULL,
+  `nombres` varchar(300) NOT NULL,
+  `apellidos` varchar(250) DEFAULT NULL,
+  `genero` varchar(250) DEFAULT NULL,
+  `telefono` varchar(250) NOT NULL,
+  `correo` varchar(250) NOT NULL,
+  `fechaNacimiento` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `persona_sector`
+--
+
+CREATE TABLE `persona_sector` (
+  `idPersona` int(11) NOT NULL,
+  `idSector` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pqrs`
+--
+
+CREATE TABLE `pqrs` (
+  `idpqrs` int(11) NOT NULL,
+  `tipoComentario` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pqrs_asignacion`
+--
+
+CREATE TABLE `pqrs_asignacion` (
+  `idPQRS` int(11) NOT NULL,
+  `idPersona` int(11) NOT NULL,
+  `comentario` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `publicaciones`
+--
+
+CREATE TABLE `publicaciones` (
+  `idPublicacion` int(11) NOT NULL,
+  `descripcionPublicacion` varchar(500) NOT NULL,
+  `idUsuarioCrea` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `roles`
+--
+
+CREATE TABLE `roles` (
+  `idRol` int(11) NOT NULL,
+  `nombreRol` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sectores`
+--
+
+CREATE TABLE `sectores` (
+  `idSector` int(11) NOT NULL,
+  `descripcionSector` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `clave` varchar(255) DEFAULT NULL,
+  `identificacionPersona` int(11) DEFAULT NULL,
+  `personaRol` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `personas`
+--
+ALTER TABLE `personas`
+  ADD PRIMARY KEY (`identificacion`);
+
+--
+-- Indices de la tabla `persona_sector`
+--
+ALTER TABLE `persona_sector`
+  ADD PRIMARY KEY (`idPersona`,`idSector`),
+  ADD KEY `idSector` (`idSector`);
+
+--
+-- Indices de la tabla `pqrs`
+--
+ALTER TABLE `pqrs`
+  ADD PRIMARY KEY (`idpqrs`);
+
+--
+-- Indices de la tabla `pqrs_asignacion`
+--
+ALTER TABLE `pqrs_asignacion`
+  ADD PRIMARY KEY (`idPQRS`,`idPersona`),
+  ADD KEY `idPersona` (`idPersona`);
+
+--
+-- Indices de la tabla `publicaciones`
+--
+ALTER TABLE `publicaciones`
+  ADD KEY `usuariocrea` (`idUsuarioCrea`);
+
+--
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`idRol`);
+
+--
+-- Indices de la tabla `sectores`
+--
+ALTER TABLE `sectores`
+  ADD PRIMARY KEY (`idSector`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `identificacionPersona` (`identificacionPersona`),
+  ADD KEY `personaRol` (`personaRol`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `idRol` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `sectores`
+--
+ALTER TABLE `sectores`
+  MODIFY `idSector` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `persona_sector`
+--
+ALTER TABLE `persona_sector`
+  ADD CONSTRAINT `persona_sector_ibfk_1` FOREIGN KEY (`idPersona`) REFERENCES `personas` (`identificacion`),
+  ADD CONSTRAINT `persona_sector_ibfk_2` FOREIGN KEY (`idSector`) REFERENCES `sectores` (`idSector`);
+
+--
+-- Filtros para la tabla `pqrs_asignacion`
+--
+ALTER TABLE `pqrs_asignacion`
+  ADD CONSTRAINT `pqrs_asignacion_ibfk_1` FOREIGN KEY (`idPQRS`) REFERENCES `pqrs` (`idpqrs`),
+  ADD CONSTRAINT `pqrs_asignacion_ibfk_2` FOREIGN KEY (`idPersona`) REFERENCES `personas` (`identificacion`);
+
+--
+-- Filtros para la tabla `publicaciones`
+--
+ALTER TABLE `publicaciones`
+  ADD CONSTRAINT `publicaciones_ibfk_1` FOREIGN KEY (`idUsuarioCrea`) REFERENCES `usuarios` (`id`);
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`identificacionPersona`) REFERENCES `personas` (`identificacion`),
+  ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`personaRol`) REFERENCES `roles` (`idRol`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
