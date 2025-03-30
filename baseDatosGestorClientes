@@ -108,7 +108,7 @@ CREATE TABLE `sectores` (
   `descripcionSector` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO sectores (descripcionSector) VALUES
+INSERT INTO sectores (idSector, descripcionSector) VALUES
 (1, 'Alimentario'),
 (2, 'Textil'),
 (3, 'Químico'),
