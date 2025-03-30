@@ -109,16 +109,16 @@ CREATE TABLE `sectores` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO sectores (descripcionSector) VALUES
-('1. Alimentario'),
-('2. Textil '),
-('3. Químico '),
-('4. Militar '),
-('5. Siderúrgica '),
-('6. Cementera '),
-('7. Turística '),
-('8. Forestal '),
-('9. Automovilística '),
-('10. tecnologico ');
+(1, 'Alimentario'),
+(2, 'Textil'),
+(3, 'Químico'),
+(4, 'Militar'),
+(5, 'Siderúrgica'),
+(6, 'Cementera'),
+(7, 'Turística'),
+(8, 'Forestal'),
+(9, 'Automovilística'),
+(10, 'Tecnologico');
 
 -- --------------------------------------------------------
 
