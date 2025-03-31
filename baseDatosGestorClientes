@@ -236,7 +236,6 @@ ALTER TABLE `publicaciones`
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`identificacionPersona`) REFERENCES `personas` (`identificacion`),
   ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`personaRol`) REFERENCES `roles` (`idRol`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
