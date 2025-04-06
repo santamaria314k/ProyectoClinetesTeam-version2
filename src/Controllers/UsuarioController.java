@@ -12,7 +12,15 @@ public class UsuarioController {
         this.servicioUsuario = new UsuarioService();
     }
     
-    public void registrarUsuario(Usuario usuario){
-        this.servicioUsuario.insertarUsuario(usuario);
+    public boolean registrarUsuario(Usuario usuario){
+        boolean respuesta;
+        respuesta = this.servicioUsuario.insertarUsuario(usuario);
+        return respuesta;
+    }
+    
+    public boolean validarUsuarioExistente(int identificacion){
+        boolean respuesta;
+        respuesta = this.servicioUsuario.validarUsuarioExistente(identificacion);
+        return respuesta;
     }
 }

@@ -9,7 +9,8 @@ import java.sql.SQLException;
 
 
 public class PersonaJuridicaService {
-    public void insertarEmpresa(PersonaJuridica empresa){
+    public boolean insertarEmpresa(PersonaJuridica empresa){
+        boolean respuesta = false;
         Connection conn = DataBase.conectar();
         if(conn != null){
             try{
@@ -25,12 +26,15 @@ public class PersonaJuridicaService {
                 pstmt.setDate(8,empresa.getFechaNacimiento());
                 pstmt.executeUpdate();
                 System.out.println("Empresa registrada exitosamente");
+                respuesta = true;
             } catch(SQLException ex){
                 System.out.println("Error al registrar la empresa: " + ex.getMessage());
                 ex.printStackTrace();
+                respuesta = false;
             } finally {
                 DataBase.Desconectar(conn);
             }
         }
+        return respuesta;
     }
 }

@@ -25,7 +25,6 @@ public class SectorService {
                     int idSector = rs.getInt("idSector");
                     String descripcionSector = rs.getString("descripcionSector");
                     System.out.println(descripcionSector);
-                    sectores.add(new Sector(idSector, descripcionSector));
                 }
             }catch(SQLException ex){
                 ex.printStackTrace();
@@ -36,7 +35,8 @@ public class SectorService {
         return sectores;
     }
     
-    public void ingresarPersonaSector(int usuario, int idSector){
+    public boolean ingresarPersonaSector(int usuario, int idSector){
+        boolean respuesta = false;
         Connection conn = DataBase.conectar();
         if(conn != null){
             try{
@@ -45,13 +45,16 @@ public class SectorService {
                 pstmt.setInt(1, usuario);
                 pstmt.setInt(2, idSector);
                 pstmt.executeUpdate();
-                System.out.println("Sectores de la empresa registrados exitosamente");  
+                System.out.println("Sectores de la empresa registrados exitosamente");
+                respuesta = true;
             } catch(SQLException ex){
                 System.out.println("Error al registrar la empresa: " + ex.getMessage());
                 ex.printStackTrace();
+                respuesta = false;
             } finally{
                 DataBase.Desconectar(conn);
             }
-        } 
+        }
+        return respuesta;
     }
 }

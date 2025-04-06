@@ -17,7 +17,9 @@ public class SectorController {
         return servicioSector.obtenerSectores();
     }
     
-    public void ingresarPersonaSector (int usuario, int idSector){
-        this.servicioSector.ingresarPersonaSector(usuario, idSector);
+    public boolean ingresarPersonaSector (int usuario, int idSector){
+        boolean respuesta;
+        respuesta = this.servicioSector.ingresarPersonaSector(usuario, idSector);
+        return respuesta;
     }
 }
