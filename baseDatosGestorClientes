@@ -136,7 +136,7 @@ INSERT INTO sectores (idSector, descripcionSector) VALUES
 --
 
 CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) DEFAULT NULL,
   `clave` varchar(255) DEFAULT NULL,
   `identificacionPersona` int(11) DEFAULT NULL,
