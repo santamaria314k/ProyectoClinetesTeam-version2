@@ -11,11 +11,11 @@ public class Persona {
     private String nombre;
     private String telefono;
     private String correo;
-    private Date fechaNacimiento;
+    private java.sql.Date fechaNacimiento;
     private ArrayList <Sector> sector = new ArrayList<>();
     private boolean esAdmin;
 
-    public Persona(int identificacion, String tipoIdentificacion, String nombre, String telefono, String correo, Date fechaNacimiento, boolean esAdmin) {
+    public Persona(int identificacion, String tipoIdentificacion, String nombre, String telefono, String correo, java.sql.Date fechaNacimiento, boolean esAdmin) {
         this.identificacion = identificacion;
         this.tipoIdentificacion = tipoIdentificacion;
         this.nombre = nombre;
@@ -65,11 +65,11 @@ public class Persona {
         this.correo = correo;
     }
 
-    public Date getFechaNacimiento() {
+    public java.sql.Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(java.sql.Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -88,6 +88,8 @@ public class Persona {
     public void setEsAdmin(boolean esAdmin) {
         this.esAdmin = esAdmin;
     }
+
+    
     
     
 }

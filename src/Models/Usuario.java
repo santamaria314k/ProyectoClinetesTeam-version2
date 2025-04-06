@@ -6,19 +6,45 @@ public class Usuario {
     private int idUsuario;
     private String username;
     private String password;
-    private Persona persona;
+    private PersonaJuridica personaJuridica;
+    private PersonaNatural personaNatural;
     private Rol rol;
     private boolean isAdmin;
 
-    public Usuario(int idUsuario, String username, String password, Persona persona, Rol rol, boolean isAdmin) {
+    public Usuario(int idUsuario, String username, String password, PersonaJuridica personaJuridica, PersonaNatural personaNatural, Rol rol, boolean isAdmin) {
         this.idUsuario = idUsuario;
         this.username = username;
         this.password = password;
-        this.persona = persona;
+        this.personaJuridica = personaJuridica;
+        this.personaNatural = personaNatural;
         this.rol = rol;
         this.isAdmin = isAdmin;
     }
+
+    public Usuario(String username, String password, PersonaJuridica personaJuridica, PersonaNatural personaNatural, Rol rol) {
+        this.username = username;
+        this.password = password;
+        this.personaJuridica = personaJuridica;
+        this.personaNatural = personaNatural;
+        this.rol = rol;
+    }
+
+    public Usuario(String username, String password, PersonaJuridica personaJuridica, Rol rol) {
+        this.username = username;
+        this.password = password;
+        this.personaJuridica = personaJuridica;
+        this.rol = rol;
+    }
+
+    public Usuario(String username, String password, PersonaNatural personaNatural, Rol rol) {
+        this.username = username;
+        this.password = password;
+        this.personaNatural = personaNatural;
+        this.rol = rol;
+    }
     
+    
+
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -43,12 +69,20 @@ public class Usuario {
         this.password = password;
     }
 
-    public Persona getPersona() {
-        return persona;
+    public PersonaJuridica getPersonaJuridica() {
+        return personaJuridica;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
+    public void setPersonaJuridica(PersonaJuridica personaJuridica) {
+        this.personaJuridica = personaJuridica;
+    }
+
+    public PersonaNatural getPersonaNatural() {
+        return personaNatural;
+    }
+
+    public void setPersonaNatural(PersonaNatural personaNatural) {
+        this.personaNatural = personaNatural;
     }
 
     public Rol getRol() {
@@ -66,6 +100,8 @@ public class Usuario {
     public void setIsAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
+
+    
     
     
 }

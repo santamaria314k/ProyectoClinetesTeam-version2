@@ -35,5 +35,8 @@ public class Sector {
         this.descripcionSector = descripcionSector;
     }
     
-    
+    @Override
+    public String toString(){
+        return descripcionSector;
+    }
 }
