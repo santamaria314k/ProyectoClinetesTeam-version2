@@ -199,6 +199,9 @@ ALTER TABLE `usuarios`
   ADD KEY `identificacionPersona` (`identificacionPersona`),
   ADD KEY `personaRol` (`personaRol`);
 
+ALTER TABLE `usuarios`
+MODIFY COLUMN id INT NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
