@@ -8,7 +8,7 @@ public class PersonaNatural extends Persona{
     private String apellido;
     private String genero;
 
-    public PersonaNatural(String apellido, String genero, int identificacion, String tipoIdentificacion, String nombre, String telefono, String correo, Date fechaNacimiento, boolean esAdmin) {
+    public PersonaNatural(String apellido, String genero, int identificacion, String tipoIdentificacion, String nombre, String telefono, String correo, java.sql.Date fechaNacimiento, boolean esAdmin) {
         super(identificacion, tipoIdentificacion, nombre, telefono, correo, fechaNacimiento, esAdmin);
         this.apellido = apellido;
         this.genero = genero;
