@@ -461,7 +461,10 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoDVFocusLost"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="campoDVMouseExited"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoDVActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoDVKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator17">
@@ -499,6 +502,9 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoRazonSocialFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator18">
           <Properties>
@@ -542,6 +548,9 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoEmailFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator20">
           <Properties>
@@ -578,6 +587,10 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoTelefonoFocusLost"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoTelefonoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator21">
           <Properties>
@@ -632,6 +645,9 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoUsernameFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator23">
           <Properties>
@@ -668,6 +684,9 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoPasswordFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonRegistroEmpresa">
           <Properties>
@@ -755,6 +774,9 @@
           <Properties>
             <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoFechaFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
@@ -784,6 +806,10 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoIdentificacionFocusLost"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="campoIdentificacionKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator25">
           <Properties>
@@ -815,6 +841,9 @@
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
               </Properties>
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoDescripcionFocusLost"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
