@@ -1,26 +1,25 @@
-
 package Controllers;
 
 import Models.Usuario;
 import Services.UsuarioService;
 
-
 public class UsuarioController {
-    public UsuarioService servicioUsuario;
-    
-    public UsuarioController(){
+    private UsuarioService servicioUsuario;
+
+    public UsuarioController() {
         this.servicioUsuario = new UsuarioService();
     }
-    
-    public boolean registrarUsuario(Usuario usuario){
-        boolean respuesta;
-        respuesta = this.servicioUsuario.insertarUsuario(usuario);
-        return respuesta;
+
+    public boolean registrarUsuario(Usuario usuario) {
+        return this.servicioUsuario.insertarUsuario(usuario);
     }
-    
-    public boolean validarUsuarioExistente(int identificacion){
-        boolean respuesta;
-        respuesta = this.servicioUsuario.validarUsuarioExistente(identificacion);
-        return respuesta;
+
+    public boolean validarUsuarioExistente(int identificacion) {
+        return this.servicioUsuario.validarUsuarioExistente(identificacion);
     }
+
+    public Usuario login(String username, String password) {
+        return this.servicioUsuario.login(username, password);
+    }
+
 }
