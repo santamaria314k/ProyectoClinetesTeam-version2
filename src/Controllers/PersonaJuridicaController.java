@@ -12,7 +12,9 @@ public class PersonaJuridicaController {
         this.personaJuridicaServicio = new PersonaJuridicaService();
     }
     
-    public void insertarEmpresa(PersonaJuridica empresa){
-        personaJuridicaServicio.insertarEmpresa(empresa);
+    public boolean insertarEmpresa(PersonaJuridica empresa){
+        boolean respuesta;
+        respuesta = personaJuridicaServicio.insertarEmpresa(empresa);
+        return respuesta;
     }
 }

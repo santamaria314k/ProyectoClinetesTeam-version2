@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -178,9 +179,19 @@ public class RegistroEmpresa extends javax.swing.JFrame {
         campoDV.setToolTipText("");
         campoDV.setBorder(null);
         campoDV.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoDV.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoDVFocusLost(evt);
+            }
+        });
         campoDV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoDVActionPerformed(evt);
+            }
+        });
+        campoDV.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoDVKeyTyped(evt);
             }
         });
 
@@ -196,6 +207,11 @@ public class RegistroEmpresa extends javax.swing.JFrame {
         campoRazonSocial.setToolTipText("");
         campoRazonSocial.setBorder(null);
         campoRazonSocial.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoRazonSocial.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoRazonSocialFocusLost(evt);
+            }
+        });
 
         jSeparator18.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -211,6 +227,11 @@ public class RegistroEmpresa extends javax.swing.JFrame {
         campoEmail.setToolTipText("");
         campoEmail.setBorder(null);
         campoEmail.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoEmailFocusLost(evt);
+            }
+        });
 
         jSeparator20.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -224,6 +245,16 @@ public class RegistroEmpresa extends javax.swing.JFrame {
         campoTelefono.setToolTipText("");
         campoTelefono.setBorder(null);
         campoTelefono.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoTelefonoFocusLost(evt);
+            }
+        });
+        campoTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoTelefonoKeyTyped(evt);
+            }
+        });
 
         jSeparator21.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -243,6 +274,11 @@ public class RegistroEmpresa extends javax.swing.JFrame {
         campoUsername.setToolTipText("");
         campoUsername.setBorder(null);
         campoUsername.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoUsername.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoUsernameFocusLost(evt);
+            }
+        });
 
         jSeparator23.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -256,6 +292,11 @@ public class RegistroEmpresa extends javax.swing.JFrame {
         campoPassword.setToolTipText("");
         campoPassword.setBorder(null);
         campoPassword.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoPasswordFocusLost(evt);
+            }
+        });
 
         botonRegistroEmpresa.setBackground(new java.awt.Color(102, 102, 102));
         botonRegistroEmpresa.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 14)); // NOI18N
@@ -302,6 +343,16 @@ public class RegistroEmpresa extends javax.swing.JFrame {
         campoIdentificacion.setToolTipText("");
         campoIdentificacion.setBorder(null);
         campoIdentificacion.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        campoIdentificacion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoIdentificacionFocusLost(evt);
+            }
+        });
+        campoIdentificacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campoIdentificacionKeyTyped(evt);
+            }
+        });
 
         jSeparator25.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -311,6 +362,11 @@ public class RegistroEmpresa extends javax.swing.JFrame {
 
         campoDescripcion.setColumns(20);
         campoDescripcion.setRows(5);
+        campoDescripcion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoDescripcionFocusLost(evt);
+            }
+        });
         jScrollPane2.setViewportView(campoDescripcion);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -524,29 +580,10 @@ public class RegistroEmpresa extends javax.swing.JFrame {
 
     private void botonRegistroEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroEmpresaActionPerformed
         // TODO add your handling code here:
-        int identificacion = Integer.parseInt(campoIdentificacion.getText());
-        int digitoVerificacion = Integer.parseInt(campoDV.getText());
-        String tipoIdentificacion = campoTD.getSelectedItem().toString();
-        String descripcionActividad = campoDescripcion.getText();
-        String razonSocial = campoRazonSocial.getText();
-        String telefonoEmpresa = campoTelefono.getText();
-        String correoEmpresa = campoEmail.getText();
-        Date fechaSeleccionada = campoFecha.getDate();
-        java.sql.Date fechaSQL = new java.sql.Date(fechaSeleccionada.getTime());
-        String username = campoUsername.getText();
-        String clave = campoPassword.getText();
-        int idRol = 3;
-        String descripcionRol = "administrador";
-        empresa1 = new PersonaJuridica(digitoVerificacion, descripcionActividad, identificacion, tipoIdentificacion, razonSocial, telefonoEmpresa, correoEmpresa, fechaSQL, false);
-        juridicoController.insertarEmpresa(empresa1);
-        empresaRol = new Rol(idRol,descripcionRol);
-        usuarioEmpresa = new Usuario(username, clave, empresa1, empresaRol);
-        controladorUsuario.registrarUsuario(usuarioEmpresa);
-        int[] sectoresSeleccionados = campoSectores.getSelectedIndices();
-        for (int indice : sectoresSeleccionados) {
-            int indiceModificado = indice + 1;
-            controladorSector.ingresarPersonaSector(identificacion, indiceModificado);
-            
+        if(!validarUsuario()){
+            registrarUsuario();
+        } else{
+            JOptionPane.showMessageDialog(null, "El usuario ingresado ya estaba registrado en el sistema", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_botonRegistroEmpresaActionPerformed
@@ -556,6 +593,79 @@ public class RegistroEmpresa extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void campoDVFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoDVFocusLost
+        // TODO add your handling code here:
+        if(campoDV.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese un dígito de verificación", "Error", JOptionPane.ERROR_MESSAGE);
+            campoDV.requestFocus();
+        }
+    }//GEN-LAST:event_campoDVFocusLost
+
+    private void campoTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoTelefonoKeyTyped
+        char car = evt.getKeyChar();
+        if((car<'0' || car>'9')) evt.consume();
+    }//GEN-LAST:event_campoTelefonoKeyTyped
+
+    private void campoIdentificacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoIdentificacionKeyTyped
+        char car = evt.getKeyChar();
+        if((car<'0' || car>'9')) evt.consume();
+    }//GEN-LAST:event_campoIdentificacionKeyTyped
+
+    private void campoDVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoDVKeyTyped
+        char car = evt.getKeyChar();
+        if((!campoDV.getText().isEmpty())) evt.consume();
+        if((car<'0' || car>'9')) evt.consume();
+    }//GEN-LAST:event_campoDVKeyTyped
+
+    private void campoRazonSocialFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoRazonSocialFocusLost
+        if(campoRazonSocial.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese la razón social", "Error", JOptionPane.ERROR_MESSAGE);
+            campoRazonSocial.requestFocus();
+        }
+    }//GEN-LAST:event_campoRazonSocialFocusLost
+
+    private void campoEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoEmailFocusLost
+        if(campoEmail.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese el correo", "Error", JOptionPane.ERROR_MESSAGE);
+            campoEmail.requestFocus();
+        }
+    }//GEN-LAST:event_campoEmailFocusLost
+
+    private void campoTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoTelefonoFocusLost
+        if(campoTelefono.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese el número de teléfono", "Error", JOptionPane.ERROR_MESSAGE);
+            campoTelefono.requestFocus();
+        }
+    }//GEN-LAST:event_campoTelefonoFocusLost
+
+    private void campoUsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoUsernameFocusLost
+        if(campoUsername.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese un nombre de usuario", "Error", JOptionPane.ERROR_MESSAGE);
+            campoUsername.requestFocus();
+        }
+    }//GEN-LAST:event_campoUsernameFocusLost
+
+    private void campoPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoPasswordFocusLost
+        if(campoPassword.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese una contraseña", "Error", JOptionPane.ERROR_MESSAGE);
+            campoPassword.requestFocus();
+        }
+    }//GEN-LAST:event_campoPasswordFocusLost
+
+    private void campoIdentificacionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoIdentificacionFocusLost
+        if(campoIdentificacion.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese la identificación", "Error", JOptionPane.ERROR_MESSAGE);
+            campoIdentificacion.requestFocus();
+        }
+    }//GEN-LAST:event_campoIdentificacionFocusLost
+
+    private void campoDescripcionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoDescripcionFocusLost
+        if(campoDescripcion.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese las actividades de la empresa", "Error", JOptionPane.ERROR_MESSAGE);
+            campoDescripcion.requestFocus();
+        }
+    }//GEN-LAST:event_campoDescripcionFocusLost
+    
     /**
      * @param args the command line arguments
      */
@@ -637,4 +747,49 @@ public class RegistroEmpresa extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTextField jTextField16;
     // End of variables declaration//GEN-END:variables
+    private boolean validarUsuario() {
+        boolean respuesta;
+        respuesta = controladorUsuario.validarUsuarioExistente(Integer.parseInt(campoIdentificacion.getText()));
+        return respuesta;
+    }
+    
+    private void registrarUsuario() {
+        int identificacion = Integer.parseInt(campoIdentificacion.getText());
+        int digitoVerificacion = Integer.parseInt(campoDV.getText());
+        String tipoIdentificacion = campoTD.getSelectedItem().toString();
+        String descripcionActividad = campoDescripcion.getText();
+        String razonSocial = campoRazonSocial.getText();
+        String telefonoEmpresa = campoTelefono.getText();
+        String correoEmpresa = campoEmail.getText();
+        Date fechaSeleccionada = campoFecha.getDate();
+        java.sql.Date fechaSQL = new java.sql.Date(fechaSeleccionada.getTime());
+        String username = campoUsername.getText();
+        String clave = campoPassword.getText();
+        int idRol = 3;
+        String descripcionRol = "administrador";
+        boolean proceso = true;
+        empresa1 = new PersonaJuridica(digitoVerificacion, descripcionActividad, identificacion, tipoIdentificacion, razonSocial, telefonoEmpresa, correoEmpresa, fechaSQL, false);
+        if (!juridicoController.insertarEmpresa(empresa1)){
+            proceso = false;
+        }
+        empresaRol = new Rol(idRol,descripcionRol);
+        usuarioEmpresa = new Usuario(username, clave, empresa1, empresaRol);
+        int[] sectoresSeleccionados = campoSectores.getSelectedIndices();
+        for (int indice : sectoresSeleccionados) {
+            int indiceModificado = indice + 1;
+            if(!controladorSector.ingresarPersonaSector(identificacion, indiceModificado)){
+                proceso = false;
+            }
+        }
+        if(!controladorUsuario.registrarUsuario(usuarioEmpresa)){
+            proceso = false;
+        }
+        System.out.println("proceso: " + proceso);
+        if(proceso){
+            JOptionPane.showMessageDialog(null, "El registro de la empresa fue exitoso", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Hubo un problema al registrar la empresa", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }
