@@ -3,30 +3,43 @@ package Models;
 
 
 public class Publicacion {
-    private int idoferta;
-    private String descripcionOferta;
+    private int idPublicacion;
+    private String descripcionPublicacion;
+    private int idUsuarioCrea  ;
 
-    public Publicacion(int idoferta, String descripcionOferta) {
-        this.idoferta = idoferta;
-        this.descripcionOferta = descripcionOferta;
+    public Publicacion(int idPublicacion, String descripcionPublicacion, int idUsuarioCrea) {
+        this.idPublicacion = idPublicacion;
+        this.descripcionPublicacion = descripcionPublicacion;
+        this.idUsuarioCrea  =idUsuarioCrea;
     }
     
 
-    public int getIdoferta() {
-        return idoferta;
+    public int getIdPublicacion() {
+        return idPublicacion;
     }
 
-    public void setIdoferta(int idoferta) {
-        this.idoferta = idoferta;
+    public void setIdPublicacion(int idPublicacion) {
+        this.idPublicacion = idPublicacion;
     }
 
-    public String getDescripcionOferta() {
-        return descripcionOferta;
+    public String getDescripcionPublicacion() {
+        return descripcionPublicacion;
+    }
+ 
+    public void setDescripcionPublicacion(String descripcionPublicacion) {
+        this.descripcionPublicacion = descripcionPublicacion;
     }
 
-    public void setDescripcionOferta(String descripcionOferta) {
-        this.descripcionOferta = descripcionOferta;
+    public int getIdUsuarioCrea() {
+        return idUsuarioCrea;
     }
+
+    public void setIdUsuarioCrea(int idUsuarioCrea) {
+        this.idUsuarioCrea = idUsuarioCrea;
+    }
+    
+    
+    
     
     
 }

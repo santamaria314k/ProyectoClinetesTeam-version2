@@ -1,25 +1,16 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1:3307
--- Tiempo de generación: 27-03-2025 a las 01:07:24
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.0.30
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Base de datos: `gestorclientesv2`
 --
+
+-- Eliminar la base de datos si existe
+DROP DATABASE IF EXISTS GestionClientes;
+
+-- Crear la base de datos GestionClientes
+CREATE DATABASE GestionClientes;
+
+-- Usar la base de datos GestionClientes
+USE GestionClientes;
+
 
 -- --------------------------------------------------------
 
@@ -167,6 +158,11 @@ ALTER TABLE `pqrs_asignacion`
 --
 -- Indices de la tabla `publicaciones`
 --
+
+ALTER TABLE publicaciones 
+MODIFY COLUMN idPublicacion INT AUTO_INCREMENT PRIMARY KEY;
+
+
 ALTER TABLE `publicaciones`
   ADD KEY `usuariocrea` (`idUsuarioCrea`);
 
@@ -236,7 +232,3 @@ ALTER TABLE `publicaciones`
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`identificacionPersona`) REFERENCES `personas` (`identificacion`),
   ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`personaRol`) REFERENCES `roles` (`idRol`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
