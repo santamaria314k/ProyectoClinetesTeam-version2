@@ -176,6 +176,10 @@ ALTER TABLE `pqrs_asignacion`
 --
 -- Indices de la tabla `publicaciones`
 --
+
+ALTER TABLE publicaciones 
+MODIFY COLUMN idPublicacion INT AUTO_INCREMENT PRIMARY KEY;
+
 ALTER TABLE `publicaciones`
   ADD KEY `usuariocrea` (`idUsuarioCrea`);
 
