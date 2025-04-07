@@ -13,27 +13,34 @@ import java.util.List;
 
 
 public class SectorService {
-    public List<Sector> obtenerSectores(){
-        List<Sector> sectores = new ArrayList <>();
-        Connection conn = DataBase.conectar();
-        if(conn != null){
-            try{
-                String sql = "SELECT idSector, descripcionSector FROM sectores";
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql);
-                while(rs.next()){
-                    int idSector = rs.getInt("idSector");
-                    String descripcionSector = rs.getString("descripcionSector");
-                    System.out.println(descripcionSector);
-                }
-            }catch(SQLException ex){
-                ex.printStackTrace();
-            }finally{
-                DataBase.Desconectar(conn);
-            } 
+    public List<Sector> obtenerSectores() {
+    List<Sector> sectores = new ArrayList<>();
+    Connection conn = DataBase.conectar();
+
+    if (conn != null) {
+        try {
+            String sql = "SELECT idSector, descripcionSector FROM sectores";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                int idSector = rs.getInt("idSector");
+                String descripcionSector = rs.getString("descripcionSector");
+
+                Sector sector = new Sector(idSector, descripcionSector);
+                sectores.add(sector); // ✅ Agregado 
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            DataBase.Desconectar(conn);
         }
-        return sectores;
     }
+
+    return sectores;
+}
+
     
     public boolean ingresarPersonaSector(int usuario, int idSector){
         boolean respuesta = false;

@@ -56,4 +56,32 @@ public class UsuarioService {
         }
         return respuesta;
     }
+    
+    
+    
+    public boolean insertarUsuarioNatural (Usuario usuario){
+        boolean respuesta = false;
+        Connection conn = DataBase.conectar();
+        if(conn != null){
+            try{
+                String sql = "INSERT INTO usuarios (username, clave, identificacionPersona, personaRol) VALUES (?, ?, ?, ?)";
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, usuario.getUsername());
+                pstmt.setString(2, usuario.getPassword());
+                pstmt.setInt(3, usuario.getPersonaNatural().getIdentificacion());
+                pstmt.setInt(4, usuario.getRol().getIdrol());
+                pstmt.executeUpdate();
+                System.out.println("Usuario registrado exitosamente");
+                respuesta = true;
+            } catch(SQLException ex){
+                System.out.println("Error al registrar el usuario: " + ex.getMessage());
+                ex.printStackTrace();
+                respuesta = false;
+            } finally {
+                DataBase.Desconectar(conn);
+            }
+        }
+        return respuesta;
+    }
+    
 }

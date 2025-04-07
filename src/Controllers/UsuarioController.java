@@ -17,6 +17,11 @@ public class UsuarioController {
         respuesta = this.servicioUsuario.insertarUsuario(usuario);
         return respuesta;
     }
+    public boolean registrarUsuarioNatural(Usuario usuario){
+        boolean respuesta;
+        respuesta = this.servicioUsuario.insertarUsuarioNatural(usuario);
+        return respuesta;
+    }
     
     public boolean validarUsuarioExistente(int identificacion){
         boolean respuesta;
